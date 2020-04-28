@@ -4,7 +4,6 @@ library swipebuttonflutter;
 import 'package:flutter/material.dart';
 import 'package:swipebuttonflutter/swipable_button.dart';
 
-
 /// A Button that can detect swiping movement with shimmering arrows on far end.
 class SwipingButton extends StatefulWidget {
   /// The text that the button will display.
@@ -22,7 +21,7 @@ class SwipingButton extends StatefulWidget {
   SwipingButton({
     Key key,
     @required this.text,
-    @required this.width,
+    this.width = 80,
     @required this.onSwipeCallback,
     this.swipeButtonColor = Colors.amber,
     this.backgroundColor = Colors.black,
@@ -37,7 +36,8 @@ class SwipingButton extends StatefulWidget {
       width: width,
       swipeButtonColor: this.swipeButtonColor,
       backgroundColor: this.backgroundColor,
-      iconColor: this.iconColor,buttonTextStyle: this.buttonTextStyle);
+      iconColor: this.iconColor,
+      buttonTextStyle: this.buttonTextStyle);
 }
 
 class StateSwipingButton extends State<SwipingButton> {
@@ -145,7 +145,7 @@ class StateSwipingButton extends State<SwipingButton> {
               flex: 1,
               child: AnimatedOpacity(
                 opacity:
-                (opacityVal - 0.2).isNegative ? 0.0 : (opacityVal - 0.2),
+                    (opacityVal - 0.2).isNegative ? 0.0 : (opacityVal - 0.2),
                 duration: Duration(milliseconds: 10),
                 child: Icon(
                   Icons.chevron_right,
@@ -157,7 +157,7 @@ class StateSwipingButton extends State<SwipingButton> {
               flex: 1,
               child: AnimatedOpacity(
                 opacity:
-                (opacityVal - 0.2).isNegative ? 0.0 : (opacityVal - 0.2),
+                    (opacityVal - 0.2).isNegative ? 0.0 : (opacityVal - 0.2),
                 duration: Duration(milliseconds: 10),
                 child: Icon(
                   Icons.chevron_right,
@@ -168,13 +168,12 @@ class StateSwipingButton extends State<SwipingButton> {
             isSwiping
                 ? _buildText()
                 : Container(
-              width: 0,
-              height: 0,
-            )
+                    width: 0,
+                    height: 0,
+                  )
           ],
         ),
       ],
     );
   }
 }
-

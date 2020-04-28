@@ -2,7 +2,7 @@ name: swipebuttonflutter
 description: A new Flutter package.
 version: 0.0.1
 author: Savad M V <savadmv333@gmail.com>
-homepage: https://github.com/savadmv/
+homepage: https://github.com/savadmv/swipe_button_flutter
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

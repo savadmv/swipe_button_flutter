@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 28/4/2020
 
-* TODO: Describe initial release.
+* Customisable animated swipe button
+* Written in dart
+* Works both in Android and Ios

@@ -1,6 +1,12 @@
 # swipebuttonflutter
 
-A new Flutter package.
+A new Flutter package for animated swipe button.
+
+## Screenshot
+<img src="Screenshot_1.png"/>
+
+## Gif
+![](Screen_record.gif)
 
 ## Getting Started
 

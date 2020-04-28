@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:swipebuttonflutter/swipebuttonflutter.dart';
 
-import '../swipebuttonflutter.dart';
 
 void main() => runApp(MyApp());
 

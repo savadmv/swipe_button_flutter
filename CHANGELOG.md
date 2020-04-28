@@ -1,3 +1,6 @@
+## [0.0.4] - 28/4/2020
+
+* fixed some bugs
 ## [0.0.3] - 28/4/2020
 
 * fixed some bugs

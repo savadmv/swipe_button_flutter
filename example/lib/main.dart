@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swipebuttonflutter/swipebuttonflutter.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -46,8 +45,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -66,7 +63,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: SwipingButton(text: "Start", onSwipeCallback:(){print("Called back");},width: 80,),
+        child: SwipingButton(
+          text: "Start",
+          onSwipeCallback: () {
+            print("Called back");
+          },
+          width: 80,
+        ),
       ),
 //      floatingActionButton: FloatingActionButton(
 //        onPressed: _incrementCounter,

@@ -26,7 +26,7 @@ To use this library in your code:
   ```
 
 
-A very [simple example](https://github.com/savadmv/swipe_button_flutter/blob/master/lib/example/example.dart) :
+A very [simple example](https://github.com/savadmv/swipe_button_flutter/blob/master/example/lib/main.dart) :
 
 ``` dart
 import 'package:flutter/material.dart';

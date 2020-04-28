@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:swipebuttonflutter/swipable_button.dart';
 
 /// Button that swipe and increase its width to maximum
+// ignore: must_be_immutable
 class SwipingButton extends StatefulWidget {
   /// The text that the button will display.
   final String text;
+
   /// with of the button
   final double width;
 

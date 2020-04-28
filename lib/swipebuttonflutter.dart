@@ -4,15 +4,17 @@ library swipebuttonflutter;
 import 'package:flutter/material.dart';
 import 'package:swipebuttonflutter/swipable_button.dart';
 
-/// A Button that can detect swiping movement with shimmering arrows on far end.
+/// Button that swipe and increase its width to maximum
 class SwipingButton extends StatefulWidget {
   /// The text that the button will display.
   final String text;
+  /// with of the button
   final double width;
 
   /// The callback invoked when the button is swiped.
   final VoidCallback onSwipeCallback;
 
+  /// Optional changes
   final Color swipeButtonColor;
   final Color backgroundColor;
   final Color iconColor;

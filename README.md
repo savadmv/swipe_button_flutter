@@ -6,7 +6,8 @@ A new Flutter package for animated swipe button.
 <img src="Screenshot_1.png" height="300em"/>
 
 ## Gif
-![](Screen_record.gif)
+<img src="Screen_record.gif" height="300em"/>
+
 
 ## Getting Started
 

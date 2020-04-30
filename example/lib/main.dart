@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onSwipeCallback: () {
             print("Called back");
           },
-          width: 80,
+          height: 80,
         ),
       ),
 //      floatingActionButton: FloatingActionButton(

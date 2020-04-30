@@ -51,9 +51,14 @@ class _SwipeableWidgetState extends State<SwipeableWidget>
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300))
       ..addListener(() {
-        setState(() {});
-        widget.onSwipeStartcallback(
-            _controller.value > _initControllerVal + 0.1, _controller.value);
+        if (_controller.value > _initControllerVal) {
+          setState(() {});
+          widget.onSwipeStartcallback(
+              _controller.value > _initControllerVal + 0.1, _controller.value);
+        }
+        if (_controller.value == _initControllerVal) {
+          widget.onSwipeStartcallback(false, 0);
+        }
       });
 //    _controller.addStatusListener(());
 

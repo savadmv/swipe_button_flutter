@@ -1,3 +1,7 @@
+## [0.0.5] - 28/4/2020
+
+* icon size issue solved
+* icon color issue solved
 ## [0.0.4] - 28/4/2020
 
 * fixed some bugs

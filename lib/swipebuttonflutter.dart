@@ -11,7 +11,7 @@ class SwipingButton extends StatefulWidget {
   final String text;
 
   /// with of the button
-  final double width;
+  final double height;
 
   /// The callback invoked when the button is swiped.
   final VoidCallback onSwipeCallback;
@@ -25,7 +25,7 @@ class SwipingButton extends StatefulWidget {
   SwipingButton({
     Key key,
     @required this.text,
-    this.width = 80,
+    this.height = 80,
     @required this.onSwipeCallback,
     this.swipeButtonColor = Colors.amber,
     this.backgroundColor = Colors.black,
@@ -37,7 +37,7 @@ class SwipingButton extends StatefulWidget {
   State<StatefulWidget> createState() => StateSwipingButton(
       text: text,
       onSwipeCallback: onSwipeCallback,
-      width: width,
+      height: height,
       swipeButtonColor: this.swipeButtonColor,
       backgroundColor: this.backgroundColor,
       iconColor: this.iconColor,
@@ -47,7 +47,7 @@ class SwipingButton extends StatefulWidget {
 class StateSwipingButton extends State<SwipingButton> {
   /// The text that the button will display.
   final String text;
-  final double width;
+  final double height;
 
   /// The callback invoked when the button is swiped.
   final VoidCallback onSwipeCallback;
@@ -61,7 +61,7 @@ class StateSwipingButton extends State<SwipingButton> {
   StateSwipingButton({
     Key key,
     @required this.text,
-    @required this.width,
+    @required this.height,
     @required this.onSwipeCallback,
     this.swipeButtonColor = Colors.amber,
     this.backgroundColor = Colors.black,
@@ -81,10 +81,10 @@ class StateSwipingButton extends State<SwipingButton> {
       child: Stack(
         children: <Widget>[
           Container(
-            height: width,
+            height: height,
             decoration: BoxDecoration(
                 color: backgroundColor,
-                borderRadius: BorderRadius.circular(width / 2)),
+                borderRadius: BorderRadius.circular(height / 2)),
             child: new Center(
               child: Text(
                 text.toUpperCase(),
@@ -98,17 +98,17 @@ class StateSwipingButton extends State<SwipingButton> {
             ),
           ),
           SwipeableWidget(
-            height: width,
+            height: height,
             screenSize: MediaQuery.of(context).size.width,
             child: Container(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                 child: _buildContent(),
               ),
-              height: width,
+              height: height,
               decoration: BoxDecoration(
                   color: swipeButtonColor,
-                  borderRadius: BorderRadius.circular(width / 2)),
+                  borderRadius: BorderRadius.circular(height / 2)),
             ),
             onSwipeCallback: onSwipeCallback,
             onSwipeStartcallback: (val, conVal) {
@@ -137,46 +137,42 @@ class StateSwipingButton extends State<SwipingButton> {
   }
 
   Widget _buildContent() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return Stack(
+      alignment: AlignmentDirectional.centerStart,
       children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Flexible(
-              flex: 1,
-              child: AnimatedOpacity(
-                opacity:
-                    (opacityVal - 0.2).isNegative ? 0.0 : (opacityVal - 0.2),
-                duration: Duration(milliseconds: 10),
-                child: Icon(
-                  Icons.chevron_right,
-                  color: iconColor,
-                ),
-              ),
+        Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: AnimatedOpacity(
+            opacity: (opacityVal - 0.2).isNegative ? 0.0 : (opacityVal - 0.2),
+            duration: Duration(milliseconds: 10),
+            child: Icon(
+              Icons.chevron_right,
+              color: iconColor,
+              size: height * 0.6,
             ),
-            Flexible(
-              flex: 1,
-              child: AnimatedOpacity(
-                opacity:
-                    (opacityVal - 0.2).isNegative ? 0.0 : (opacityVal - 0.2),
-                duration: Duration(milliseconds: 10),
-                child: Icon(
-                  Icons.chevron_right,
-                  color: iconColor,
-                ),
-              ),
-            ),
-            isSwiping
-                ? _buildText()
-                : Container(
-                    width: 0,
-                    height: 0,
-                  )
-          ],
+          ),
         ),
+        Align(
+          alignment: AlignmentDirectional.center,
+          child: AnimatedOpacity(
+            opacity: (opacityVal - 0.4).isNegative ? 0.0 : (opacityVal - 0.4),
+            duration: Duration(milliseconds: 10),
+            child: Icon(
+              Icons.chevron_right,
+              color: iconColor,
+              size: height * 0.6,
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: isSwiping
+              ? _buildText()
+              : Container(
+                  width: 0,
+                  height: 0,
+                ),
+        )
       ],
     );
   }

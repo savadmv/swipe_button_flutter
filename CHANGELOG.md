@@ -1,3 +1,8 @@
+## [0.0.6] - 28/4/2020
+
+* fixed some issues
+
+
 ## [0.0.5] - 28/4/2020
 
 * icon size issue solved

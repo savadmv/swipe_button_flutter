@@ -125,14 +125,11 @@ class StateSwipingButton extends State<SwipingButton> {
   }
 
   Widget _buildText() {
-    return Flexible(
-      flex: 5,
-      child: Text(
-        text.toUpperCase(),
-        style: buttonTextStyle,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
+    return Text(
+      text.toUpperCase(),
+      style: buttonTextStyle,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
     );
   }
 

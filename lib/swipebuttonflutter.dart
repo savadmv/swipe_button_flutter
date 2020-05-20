@@ -2,6 +2,7 @@ library swipebuttonflutter;
 
 /// Swipe button
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:swipebuttonflutter/swipable_button.dart';
 
 /// Button that swipe and increase its width to maximum
@@ -102,7 +103,7 @@ class StateSwipingButton extends State<SwipingButton> {
             screenSize: MediaQuery.of(context).size.width,
             child: Container(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: _buildContent(),
               ),
               height: height,
@@ -113,10 +114,12 @@ class StateSwipingButton extends State<SwipingButton> {
             onSwipeCallback: onSwipeCallback,
             onSwipeStartcallback: (val, conVal) {
               print("isGrate $conVal");
-              setState(() {
+
+              SchedulerBinding.instance
+                  .addPostFrameCallback((_) => setState(() {
                 isSwiping = val;
                 opacityVal = 1 - conVal;
-              });
+              }));
             },
           ),
         ],
@@ -125,17 +128,21 @@ class StateSwipingButton extends State<SwipingButton> {
   }
 
   Widget _buildText() {
-    return Text(
-      text.toUpperCase(),
-      style: buttonTextStyle,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
+    return Padding(
+      padding: EdgeInsets.only(left: height/2),
+      child: Text(
+        text.toUpperCase(),
+        style: buttonTextStyle,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 
   Widget _buildContent() {
     return Stack(
       alignment: AlignmentDirectional.centerStart,
+
       children: <Widget>[
         Align(
           alignment: AlignmentDirectional.centerStart,
@@ -145,7 +152,7 @@ class StateSwipingButton extends State<SwipingButton> {
             child: Icon(
               Icons.chevron_right,
               color: iconColor,
-              size: height * 0.6,
+              size: height*0.6,
             ),
           ),
         ),
@@ -156,8 +163,8 @@ class StateSwipingButton extends State<SwipingButton> {
             duration: Duration(milliseconds: 10),
             child: Icon(
               Icons.chevron_right,
-              color: iconColor,
-              size: height * 0.6,
+              color:iconColor,
+              size: height*0.6,
             ),
           ),
         ),
@@ -166,9 +173,9 @@ class StateSwipingButton extends State<SwipingButton> {
           child: isSwiping
               ? _buildText()
               : Container(
-                  width: 0,
-                  height: 0,
-                ),
+            width: 0,
+            height: 0,
+          ),
         )
       ],
     );

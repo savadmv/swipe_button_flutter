@@ -91,7 +91,9 @@ class _SwipeableWidgetState extends State<SwipeableWidget>
 
             // update the animation value according to user's pan update
             final widgetSize = context.size.width;
-            _controller.value = ((details.localPosition.dx) / widgetSize);
+            if (_dxEndsPosition >= minimumXToStartSwiping) {
+              _controller.value = ((details.localPosition.dx) / widgetSize);
+            }
           }
 //          widget.onSwipeStartcallback(_controller.value);
         },

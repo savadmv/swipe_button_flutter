@@ -1,3 +1,12 @@
+
+## [0.1.0] - 20/5/2020
+
+* fixed some issues
+* IMPORTANT UPDATE : Use the padding within the widget
+## [0.0.9] - 20/5/2020
+
+* fixed some issues
+* IMPORTANT UPDATE : Use the padding within the widget
 ## [0.0.8] - 30/4/2020
 
 * fixed some issues

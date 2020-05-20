@@ -1,10 +1,9 @@
-library swipebuttonflutter;
-
-/// Swipe button
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:swipebuttonflutter/swipable_button.dart';
 
+
+/// A Button that can detect swiping movement with shimmering arrows on far end.
 /// Button that swipe and increase its width to maximum
 // ignore: must_be_immutable
 class SwipingButton extends StatefulWidget {
@@ -22,6 +21,7 @@ class SwipingButton extends StatefulWidget {
   final Color backgroundColor;
   final Color iconColor;
   TextStyle buttonTextStyle;
+  final EdgeInsets padding;
 
   SwipingButton({
     Key key,
@@ -30,6 +30,7 @@ class SwipingButton extends StatefulWidget {
     @required this.onSwipeCallback,
     this.swipeButtonColor = Colors.amber,
     this.backgroundColor = Colors.black,
+    this.padding= const EdgeInsets.fromLTRB(0, 0, 0, 0),
     this.iconColor = Colors.white,
     this.buttonTextStyle,
   }) : super(key: key);
@@ -39,6 +40,7 @@ class SwipingButton extends StatefulWidget {
       text: text,
       onSwipeCallback: onSwipeCallback,
       height: height,
+      padding: this.padding,
       swipeButtonColor: this.swipeButtonColor,
       backgroundColor: this.backgroundColor,
       iconColor: this.iconColor,
@@ -58,12 +60,14 @@ class StateSwipingButton extends State<SwipingButton> {
   final Color backgroundColor;
   final Color iconColor;
   TextStyle buttonTextStyle;
+  final EdgeInsets padding;
 
   StateSwipingButton({
     Key key,
     @required this.text,
     @required this.height,
     @required this.onSwipeCallback,
+    this.padding= const EdgeInsets.fromLTRB(0, 0, 0, 0),
     this.swipeButtonColor = Colors.amber,
     this.backgroundColor = Colors.black,
     this.iconColor = Colors.white,
@@ -78,7 +82,7 @@ class StateSwipingButton extends State<SwipingButton> {
     }
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      padding: padding,
       child: Stack(
         children: <Widget>[
           Container(
@@ -100,7 +104,7 @@ class StateSwipingButton extends State<SwipingButton> {
           ),
           SwipeableWidget(
             height: height,
-            screenSize: MediaQuery.of(context).size.width,
+            screenSize: MediaQuery.of(context).size.width-(padding.right+padding.left),
             child: Container(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),

@@ -2,7 +2,6 @@
 ## [0.1.1] - 11/9/2020
 
 * added property swipePercentageNeeded to set the percentage of width the swipe  callback happen
-* IMPORTANT UPDATE : Use the padding within the widget
 
 ## [0.1.0] - 20/5/2020
 

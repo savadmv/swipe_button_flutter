@@ -22,6 +22,8 @@ class SwipingButton extends StatefulWidget {
   final Color iconColor;
   TextStyle buttonTextStyle;
   final EdgeInsets padding;
+  /// The decimal percentage of swiping in order for the callbacks to get called, defaults to 0.75 (75%) of the total width of the children.
+  final double swipePercentageNeeded;
 
   SwipingButton({
     Key key,
@@ -32,7 +34,7 @@ class SwipingButton extends StatefulWidget {
     this.backgroundColor = Colors.black,
     this.padding= const EdgeInsets.fromLTRB(0, 0, 0, 0),
     this.iconColor = Colors.white,
-    this.buttonTextStyle,
+    this.buttonTextStyle, this.swipePercentageNeeded,
   }) : super(key: key);
 
   @override

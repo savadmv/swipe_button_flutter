@@ -1,6 +1,6 @@
 name: swipebuttonflutter
 description: A new Flutter package for animated swipe button .This works in both Ios and Android. Button text and icons are constumisable
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/savadmv/swipe_button_flutter
 
 environment:

@@ -106,6 +106,7 @@ class StateSwipingButton extends State<SwipingButton> {
           ),
           SwipeableWidget(
             height: height,
+            swipePercentageNeeded: widget.swipePercentageNeeded==null?0.75:widget.swipePercentageNeeded,
             screenSize: MediaQuery.of(context).size.width-(padding.right+padding.left),
             child: Container(
               child: Padding(

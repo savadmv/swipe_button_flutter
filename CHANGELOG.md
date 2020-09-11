@@ -1,4 +1,8 @@
 
+## [0.1.2] - 11/9/2020
+
+* Bug fixes
+
 ## [0.1.1] - 11/9/2020
 
 * added property swipePercentageNeeded to set the percentage of width the swipe  callback happen

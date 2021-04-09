@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:swipebuttonflutter/swipable_button.dart';
 
-
 /// A Button that can detect swiping movement with shimmering arrows on far end.
 /// Button that swipe and increase its width to maximum
 // ignore: must_be_immutable
@@ -20,21 +19,23 @@ class SwipingButton extends StatefulWidget {
   final Color swipeButtonColor;
   final Color backgroundColor;
   final Color iconColor;
-  TextStyle buttonTextStyle;
+  TextStyle? buttonTextStyle;
   final EdgeInsets padding;
+
   /// The decimal percentage of swiping in order for the callbacks to get called, defaults to 0.75 (75%) of the total width of the children.
-  final double swipePercentageNeeded;
+  final double? swipePercentageNeeded;
 
   SwipingButton({
-    Key key,
-    @required this.text,
+    Key? key,
+    required this.text,
     this.height = 80,
-    @required this.onSwipeCallback,
+    required this.onSwipeCallback,
     this.swipeButtonColor = Colors.amber,
     this.backgroundColor = Colors.black,
-    this.padding= const EdgeInsets.fromLTRB(0, 0, 0, 0),
+    this.padding = const EdgeInsets.fromLTRB(0, 0, 0, 0),
     this.iconColor = Colors.white,
-    this.buttonTextStyle, this.swipePercentageNeeded,
+    this.buttonTextStyle,
+    this.swipePercentageNeeded,
   }) : super(key: key);
 
   @override
@@ -61,15 +62,15 @@ class StateSwipingButton extends State<SwipingButton> {
   final Color swipeButtonColor;
   final Color backgroundColor;
   final Color iconColor;
-  TextStyle buttonTextStyle;
+  TextStyle? buttonTextStyle;
   final EdgeInsets padding;
 
   StateSwipingButton({
-    Key key,
-    @required this.text,
-    @required this.height,
-    @required this.onSwipeCallback,
-    this.padding= const EdgeInsets.fromLTRB(0, 0, 0, 0),
+    Key? key,
+    required this.text,
+    required this.height,
+    required this.onSwipeCallback,
+    this.padding = const EdgeInsets.fromLTRB(0, 0, 0, 0),
     this.swipeButtonColor = Colors.amber,
     this.backgroundColor = Colors.black,
     this.iconColor = Colors.white,
@@ -106,8 +107,11 @@ class StateSwipingButton extends State<SwipingButton> {
           ),
           SwipeableWidget(
             height: height,
-            swipePercentageNeeded: widget.swipePercentageNeeded==null?0.75:widget.swipePercentageNeeded,
-            screenSize: MediaQuery.of(context).size.width-(padding.right+padding.left),
+            swipePercentageNeeded: widget.swipePercentageNeeded == null
+                ? 0.75
+                : widget.swipePercentageNeeded,
+            screenSize: MediaQuery.of(context).size.width -
+                (padding.right + padding.left),
             child: Container(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -122,11 +126,11 @@ class StateSwipingButton extends State<SwipingButton> {
             onSwipeStartcallback: (val, conVal) {
               print("isGrate $conVal");
 
-              SchedulerBinding.instance
+              SchedulerBinding.instance!
                   .addPostFrameCallback((_) => setState(() {
-                isSwiping = val;
-                opacityVal = 1 - conVal;
-              }));
+                        isSwiping = val;
+                        opacityVal = 1 - conVal;
+                      }));
             },
           ),
         ],
@@ -136,7 +140,7 @@ class StateSwipingButton extends State<SwipingButton> {
 
   Widget _buildText() {
     return Padding(
-      padding: EdgeInsets.only(left: height/2),
+      padding: EdgeInsets.only(left: height / 2),
       child: Text(
         text.toUpperCase(),
         style: buttonTextStyle,
@@ -149,7 +153,6 @@ class StateSwipingButton extends State<SwipingButton> {
   Widget _buildContent() {
     return Stack(
       alignment: AlignmentDirectional.centerStart,
-
       children: <Widget>[
         Align(
           alignment: AlignmentDirectional.centerStart,
@@ -159,7 +162,7 @@ class StateSwipingButton extends State<SwipingButton> {
             child: Icon(
               Icons.chevron_right,
               color: iconColor,
-              size: height*0.6,
+              size: height * 0.6,
             ),
           ),
         ),
@@ -170,8 +173,8 @@ class StateSwipingButton extends State<SwipingButton> {
             duration: Duration(milliseconds: 10),
             child: Icon(
               Icons.chevron_right,
-              color:iconColor,
-              size: height*0.6,
+              color: iconColor,
+              size: height * 0.6,
             ),
           ),
         ),
@@ -180,9 +183,9 @@ class StateSwipingButton extends State<SwipingButton> {
           child: isSwiping
               ? _buildText()
               : Container(
-            width: 0,
-            height: 0,
-          ),
+                  width: 0,
+                  height: 0,
+                ),
         )
       ],
     );

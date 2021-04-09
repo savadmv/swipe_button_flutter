@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:swipebuttonflutter/swipebuttonflutter.dart';
 
 import 'home_page.dart';
 
@@ -27,5 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

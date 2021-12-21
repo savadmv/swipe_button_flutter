@@ -20,6 +20,7 @@ class SwipingButton extends StatefulWidget {
   final Color backgroundColor;
   final Color iconColor;
   TextStyle? buttonTextStyle;
+  TextStyle? insideTextStyle;
   final EdgeInsets padding;
 
   /// The decimal percentage of swiping in order for the callbacks to get called, defaults to 0.75 (75%) of the total width of the children.
@@ -35,6 +36,7 @@ class SwipingButton extends StatefulWidget {
     this.padding = const EdgeInsets.fromLTRB(0, 0, 0, 0),
     this.iconColor = Colors.white,
     this.buttonTextStyle,
+    this.insideTextStyle,
     this.swipePercentageNeeded,
   }) : super(key: key);
 
@@ -47,7 +49,8 @@ class SwipingButton extends StatefulWidget {
       swipeButtonColor: this.swipeButtonColor,
       backgroundColor: this.backgroundColor,
       iconColor: this.iconColor,
-      buttonTextStyle: this.buttonTextStyle);
+      buttonTextStyle: this.buttonTextStyle,
+      insideTextStyle: this.insideTextStyle);
 }
 
 class StateSwipingButton extends State<SwipingButton> {
@@ -63,6 +66,7 @@ class StateSwipingButton extends State<SwipingButton> {
   final Color backgroundColor;
   final Color iconColor;
   TextStyle? buttonTextStyle;
+  TextStyle? insideTextStyle;
   final EdgeInsets padding;
 
   StateSwipingButton({
@@ -75,12 +79,17 @@ class StateSwipingButton extends State<SwipingButton> {
     this.backgroundColor = Colors.black,
     this.iconColor = Colors.white,
     this.buttonTextStyle,
+    this.insideTextStyle,
   });
 
   @override
   Widget build(BuildContext context) {
     if (buttonTextStyle == null) {
       buttonTextStyle = TextStyle(
+          fontSize: 16.0, fontWeight: FontWeight.w800, color: Colors.white);
+    }
+    if (insideTextStyle == null) {
+      insideTextStyle = TextStyle(
           fontSize: 16.0, fontWeight: FontWeight.w800, color: Colors.white);
     }
     return Container(
@@ -96,10 +105,7 @@ class StateSwipingButton extends State<SwipingButton> {
             child: new Center(
               child: Text(
                 text.toUpperCase(),
-                style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.white),
+                style: insideTextStyle,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
